@@ -1,0 +1,18 @@
+def fibonacci(n):
+    fib_sequence = [0, 1]  # Initialize the sequence with the first two Fibonacci numbers
+
+    if n <= 1:
+        return fib_sequence[:n+1]  # Return the sequence up to the given index
+
+    while len(fib_sequence) <= n:
+        next_num = fib_sequence[-1] + fib_sequence[-2]  # Calculate the next Fibonacci number
+        fib_sequence.append(next_num)
+
+    return fib_sequence
+
+# Prompt the user to enter the desired index of the Fibonacci sequence
+n = int(input("Enter the index of the Fibonacci sequence: "))
+
+# Call the fibonacci function and print the result
+fib_numbers = fibonacci(n)
+print(f"The Fibonacci sequence up to index {n} is: {fib_numbers}")
