@@ -1,0 +1,42 @@
+import csv
+
+def write_to_csv(info_list):
+    with open('student_info.csv', 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(info_list)
+
+def read_from_csv():
+    with open('student_info.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            print(row)
+
+student_info = []
+
+while True:
+    print("Welcome to the School Administration Program")
+    print("1. Add student information")
+    print("2. View student information")
+    print("3. Exit")
+
+    choice = input("Enter your choice (1-3): ")
+
+    if choice == '1':
+        name = input("Enter the student's name: ")
+        age = input("Enter the student's age: ")
+        grade = input("Enter the student's grade: ")
+        info = [name, age, grade]
+        student_info.append(info)
+        write_to_csv(info)
+        print("Student information added successfully!")
+
+    elif choice == '2':
+        read_from_csv()
+
+    elif choice == '3':
+        break
+
+    else:
+        print("Invalid choice! Please enter a number between 1 and 3.")
+
+print("Thank you for using the School Administration Program!")
